@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso Legal | AnglerLog</title>
+  <meta name="description" content="Aviso legal e informações sobre a entidade responsável pela aplicação AnglerLog.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    :root {
+      --bg-color: #020617;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 24px 16px;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 24px;
+      background: rgba(2, 6, 23, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 13px;
+    }
+    .nav-bar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-bar a:hover, .nav-bar a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .header {
+      padding: 36px 28px;
+      border-bottom: 1px solid var(--card-border);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .header p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 13px;
+    }
+    .content {
+      padding: 32px 28px;
+    }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .legal-table th, .legal-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--card-border);
+      text-align: left;
+      font-size: 14px;
+    }
+    .legal-table th {
+      color: var(--text-muted);
+      width: 35%;
+      font-weight: 600;
+      background: rgba(2, 6, 23, 0.4);
+    }
+    .legal-table td {
+      color: var(--text-main);
+    }
+    .footer {
+      padding: 20px 28px;
+      background: rgba(2, 6, 23, 0.85);
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background: rgba(14, 165, 233, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <a href="/">← Voltar à Aplicação</a>
+      <a href="/privacy.html">Privacidade</a>
+      <a href="/terms.html">Termos</a>
+      <a href="/contact.html">Contacto</a>
+      <a href="/tokushoho.html" class="active">Aviso Legal</a>
+    </div>
+
+    <div class="header">
+      <h1>⚖️ Aviso Legal & Informações Legais</h1>
+      <p>Informações de identificação sobre o fornecedor do serviço em conformidade com as normas legais.</p>
+    </div>
+
+    <div class="content">
+      <table class="legal-table">
+        <tbody>
+          <tr>
+            <th>Nome do Serviço</th>
+            <td>AnglerLog - Diário de Pesca Pessoal & GPS Spot-Tracker</td>
+          </tr>
+          <tr>
+            <th>Entidade Responsável</th>
+            <td>Equipa de Desenvolvimento AnglerLog</td>
+          </tr>
+          <tr>
+            <th>Contacto</th>
+            <td>support@anglerlog.app</td>
+          </tr>
+          <tr>
+            <th>Preço do Serviço</th>
+            <td>Aplicação Web Progressiva de utilização gratuita (com anúncios opcionais)</td>
+          </tr>
+          <tr>
+            <th>Requisitos de Sistema</th>
+            <td>Navegadores modernos compatíveis com HTML5 e IndexedDB (Safari, Google Chrome, Mozilla Firefox, Microsoft Edge)</td>
+          </tr>
+          <tr>
+            <th>Armazenamento dos Dados</th>
+            <td>100% local no dispositivo do utilizador (IndexedDB)</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/" class="back-btn">← Voltar ao AnglerLog</a>
+    </div>
+
+    <div class="footer">
+      © 2026 AnglerLog. Todos os direitos reservados.
+    </div>
+  </div>
+</body>
+</html>

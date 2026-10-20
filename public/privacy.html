@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade | AnglerLog</title>
+  <meta name="description" content="Política de Privacidade do AnglerLog. Saiba como protegemos os seus dados, coordenadas GPS e diário de pesca de forma 100% local e em total conformidade com o RGPD.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    :root {
+      --bg-color: #020617;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --success: #34d399;
+      --warning: #fbbf24;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 24px 16px;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 24px;
+      background: rgba(2, 6, 23, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 13px;
+    }
+    .nav-bar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-bar a:hover, .nav-bar a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .header {
+      padding: 36px 28px;
+      border-bottom: 1px solid var(--card-border);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .content {
+      padding: 32px 28px;
+    }
+    .section {
+      margin-bottom: 28px;
+    }
+    .section h2 {
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section p {
+      color: var(--text-main);
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .footer {
+      padding: 20px 28px;
+      background: rgba(2, 6, 23, 0.85);
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background: rgba(14, 165, 233, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <a href="/">← Voltar à Aplicação</a>
+      <a href="/privacy.html" class="active">Privacidade</a>
+      <a href="/terms.html">Termos</a>
+      <a href="/contact.html">Contacto</a>
+      <a href="/tokushoho.html">Aviso Legal</a>
+    </div>
+
+    <div class="header">
+      <div class="badge">Proteção Total de Dados (RGPD)</div>
+      <h1>🔒 Política de Privacidade</h1>
+      <p>Última atualização: 21 de outubro de 2026 | AnglerLog</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2>1. Princípio Fundamental: Arquitetura Local (Offline-First)</h2>
+        <p>
+          No AnglerLog, a privacidade dos pescadores é a nossa máxima prioridade. Compreendemos o imenso valor dos seus pesqueiros secretos, técnicas e histórico de capturas. Por esse motivo, o AnglerLog foi concebido segundo uma arquitetura 100% local: todos os dados residem exclusivamente no armazenamento interno do seu navegador (IndexedDB).
+        </p>
+        <p>
+          As suas coordenadas GPS, nomes de pesqueiros, fotografias e pormenores de capturas nunca são transmitidos nem partilhados com os nossos servidores ou com terceiros.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>2. Permissões de Geolocalização (GPS)</h2>
+        <p>
+          A aplicação solicita autorização para aceder à sua localização exclusivamente para centrar o mapa na sua posição atual e permitir a gravação de pontos de pesca no terreno ou a bordo. Esta informação é processada unicamente no seu dispositivo.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>3. Publicidade e Cookies de Terceiros</h2>
+        <p>
+          Para manter a aplicação totalmente gratuita, o AnglerLog pode apresentar anúncios publicitários disponibilizados através do Google AdSense. A Google pode utilizar cookies para apresentar anúncios personalizados com base nas visitas anteriores dos utilizadores. Pode desativar anúncios personalizados nas definições de anúncios da Google.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>4. Controlo e Cópia de Segurança dos Dados</h2>
+        <p>
+          Mantém o controlo absoluto dos seus dados em qualquer altura. Pode exportar uma cópia de segurança completa em formato JSON ou apagar integralmente a base de dados local diretamente através do menu da aplicação.
+        </p>
+        <a href="/" class="back-btn">← Voltar ao AnglerLog</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2026 AnglerLog. Todos os direitos reservados.
+    </div>
+  </div>
+</body>
+</html>
