@@ -684,6 +684,89 @@ export interface BackupData {
   tackles?: TackleSet[];
 }
 
+export interface BackupSummary {
+  version: number;
+  exportedAt?: string;
+  spotCount: number;
+  catchCount: number;
+  photoCount: number;
+  tackleCount: number;
+}
+
+export interface BackupValidationResult {
+  isValid: boolean;
+  error?: string;
+  data?: BackupData;
+  summary?: BackupSummary;
+}
+
+/**
+ * Validates the backup JSON structure, types, and required properties.
+ */
+export function validateBackupData(raw: unknown): BackupValidationResult {
+  if (!raw || typeof raw !== 'object') {
+    return { isValid: false, error: 'Formato de arquivo de backup inválido (não é um objeto JSON).' };
+  }
+
+  const obj = raw as Record<string, any>;
+
+  if (!('spots' in obj) || !Array.isArray(obj.spots)) {
+    return { isValid: false, error: 'Dados dos pontos de pesca (spots) não encontrados ou corrompidos.' };
+  }
+
+  if (!('catches' in obj) || !Array.isArray(obj.catches)) {
+    return { isValid: false, error: 'Registros de capturas (catches) não encontrados ou corrompidos.' };
+  }
+
+  for (let i = 0; i < obj.spots.length; i++) {
+    const s = obj.spots[i];
+    if (!s || typeof s !== 'object' || typeof s.id !== 'string' || typeof s.name !== 'string') {
+      return { isValid: false, error: `Ponto de pesca #${i + 1} inválido (ID ou nome ausente).` };
+    }
+    if (typeof s.latitude !== 'number' || isNaN(s.latitude) || typeof s.longitude !== 'number' || isNaN(s.longitude)) {
+      return { isValid: false, error: `As coordenadas do ponto "${s.name}" são inválidas.` };
+    }
+  }
+
+  for (let i = 0; i < obj.catches.length; i++) {
+    const c = obj.catches[i];
+    if (!c || typeof c !== 'object' || typeof c.id !== 'string' || typeof c.spotId !== 'string' || typeof c.date !== 'string') {
+      return { isValid: false, error: `Captura #${i + 1} inválida (ID, spotId ou data ausente).` };
+    }
+  }
+
+  if ('photos' in obj && obj.photos !== undefined && !Array.isArray(obj.photos)) {
+    return { isValid: false, error: 'Formato dos dados de fotos inválido.' };
+  }
+
+  if ('tackles' in obj && obj.tackles !== undefined && !Array.isArray(obj.tackles)) {
+    return { isValid: false, error: 'Formato dos dados de tralhas inválido.' };
+  }
+
+  const validData: BackupData = {
+    version: typeof obj.version === 'number' ? obj.version : 1,
+    exportedAt: typeof obj.exportedAt === 'string' ? obj.exportedAt : new Date().toISOString(),
+    spots: obj.spots as FishingSpot[],
+    catches: obj.catches as CatchLog[],
+    photos: Array.isArray(obj.photos) ? (obj.photos as StoredPhoto[]) : [],
+    tackles: Array.isArray(obj.tackles) ? (obj.tackles as TackleSet[]) : [],
+  };
+
+  return {
+    isValid: true,
+    data: validData,
+    summary: {
+      version: validData.version,
+      exportedAt: validData.exportedAt,
+      spotCount: validData.spots.length,
+      catchCount: validData.catches.length,
+      photoCount: validData.photos.length,
+      tackleCount: validData.tackles ? validData.tackles.length : 0,
+    },
+  };
+}
+
+
 export async function exportBackup(includePhotos = true): Promise<BackupData> {
   const spots = await getAllSpots();
   const catches = await getAllCatches();

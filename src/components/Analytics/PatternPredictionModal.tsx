@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { FishingSpot, CatchLog, WeatherData } from '../../types/fishing';
 import { 
   analyzeHitPatternAndPredict, 
@@ -32,6 +32,13 @@ export const PatternPredictionModal: React.FC<PatternPredictionModalProps> = ({
 }) => {
   const [selectedSpotId, setSelectedSpotId] = useState<string>(currentSpot?.id || 'all');
   const [activeTab, setActiveTab] = useState<TabType>('all');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [activeTab, selectedSpotId]);
 
   const activeSpot = useMemo(() => {
     if (selectedSpotId === 'all') return undefined;
@@ -118,7 +125,7 @@ export const PatternPredictionModal: React.FC<PatternPredictionModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-[1200] flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-in fade-in">
-      <div className="relative w-full max-w-2xl bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden text-white flex flex-col max-h-[96vh] sm:max-h-[90vh]">
+      <div className="relative w-full max-w-2xl bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden text-white flex flex-col h-[88vh] sm:h-[85vh] max-h-[96vh] sm:max-h-[90vh]">
         
         {/* Mobile Drag Indicator Bar */}
         <div className="w-12 h-1 bg-slate-700 rounded-full mx-auto mt-2 sm:hidden shrink-0" />
@@ -213,7 +220,7 @@ export const PatternPredictionModal: React.FC<PatternPredictionModalProps> = ({
         </div>
 
         {/* Scrollable Body */}
-        <div className="p-3 sm:p-4.5 overflow-y-auto space-y-3 sm:space-y-4">
+        <div ref={scrollContainerRef} ref={scrollContainerRef} className="p-3 sm:p-4.5 overflow-y-auto space-y-3 sm:space-y-4 flex-1">
           
           {/* Main Score Hero Card */}
           {(activeTab === 'all' || activeTab === 'windows') && (

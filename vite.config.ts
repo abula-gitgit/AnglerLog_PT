@@ -29,7 +29,7 @@ export default defineConfig(() => {
           background_color: '#020617',
           display: 'standalone',
           orientation: 'portrait-primary',
-          start_url: '/',
+          start_url: '/?source=pwa',
           scope: '/',
           icons: [
             {
@@ -54,6 +54,8 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+          navigateFallback: '/index.html',
+          ignoreURLParametersMatching: [/^utm_/, /^source/, /^mode/],
           runtimeCaching: [
             // Map Tiles: OpenStreetMap, GSI, CartoDB, OpenTopoMap, Esri ArcGIS
             {
@@ -62,8 +64,8 @@ export default defineConfig(() => {
               options: {
                 cacheName: 'map-tiles-cache',
                 expiration: {
-                  maxEntries: 1200,
-                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                  maxEntries: 2000,
+                  maxAgeSeconds: 60 * 60 * 24 * 60, // 30 days
                   purgeOnQuotaError: true,
                 },
                 cacheableResponse: {

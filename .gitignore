@@ -8,3 +8,5 @@ coverage/
 !.env.example
 bun.lock
 package-lock.json
+
+dev-dist/
